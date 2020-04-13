@@ -143,7 +143,7 @@ format-padding = 1
 label-active = " %name% "
 label-active-foreground = #fcf4a8
 label-occupied = " %name% "
-label-occupied-foreground = #595959
+label-occupied-foreground = #777777
 label-urgent = " %name%! "
 label-empty = "   "
 
