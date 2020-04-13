@@ -29,6 +29,51 @@ label = %output%
 tail = true
 format-padding = 1
 
+[bar/minimal]
+foreground = #ffffff
+background = #000000
+
+height = 60
+width = 15%
+offset-x = 10
+offset-y = 10
+
+border-size = 2
+border-color = #ffffff
+
+modules-center = 2bwm_workspaces simple_date separator simple_bat
+bottom = false
+
+font-0 = Inconsolata:size=12;3
+
+tray-position = none
+override-redirect = true
+
+padding = 10
+radius = 1.0
+
+[module/separator]
+type = custom/text
+content = |
+
+
+[module/simple_date]
+type = internal/date
+interval = 5
+time = "%H:%M"
+time-alt = "%e %b"
+format-padding = 1
+label = %time%
+
+
+[module/simple_bat]
+type = custom/script
+format = <label>
+format-padding = 1
+interval = 5.0
+exec = $HOME/.config/polybar/scripts/bat.sh
+
+
 [bar/bar]
 foreground = #ffffff
 background = #222235
@@ -94,12 +139,13 @@ pin-workspaces = false
 enable-click = false
 enable-scroll = false
 format = <label-state>
-format-padding = 3
-label-active = "  %name%  "
+format-padding = 1
+label-active = " %name% "
 label-active-foreground = #fcf4a8
-label-occupied = "  %name%  "
-label-urgent = "  %name%! "
-label-empty = "     "
+label-occupied = " %name% "
+label-occupied-foreground = #595959
+label-urgent = " %name%! "
+label-empty = "   "
 
 [module/net]
 type = internal/network
