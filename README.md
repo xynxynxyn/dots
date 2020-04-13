@@ -1,5 +1,7 @@
 # Nyx - dots
 
+![screenshot of desktop](scrot.png)
+
 ## Essential software
 - polybar
 - neovim
