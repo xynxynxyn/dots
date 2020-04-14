@@ -1,6 +1,7 @@
 ///---User configurable stuff---///
 ///---Modifiers---///
 #define MOD             XCB_MOD_MASK_1       /* Super/Windows key  or check xmodmap(1) with -pm  defined in /usr/include/xcb/xproto.h */
+#define WORKSPACES	6
 ///--Speed---///
 /* Move this many pixels when moving or resizing with keyboard unless the window has hints saying otherwise.
  *0)move step slow   1)move step fast
