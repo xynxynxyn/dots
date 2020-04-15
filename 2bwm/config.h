@@ -1,7 +1,6 @@
 ///---User configurable stuff---///
 ///---Modifiers---///
 #define MOD             XCB_MOD_MASK_1       /* Super/Windows key  or check xmodmap(1) with -pm  defined in /usr/include/xcb/xproto.h */
-#define WORKSPACES	6
 ///--Speed---///
 /* Move this many pixels when moving or resizing with keyboard unless the window has hints saying otherwise.
  *0)move step slow   1)move step fast
@@ -45,25 +44,15 @@ static const uint8_t borders[] = {3,5,5,4};
 #define LOOK_INTO "WM_NAME"
 static const char *ignore_names[] = {"bar", "xclock"};
 ///--Menus and Programs---///
-static const char *urxvt[] = { "/usr/bin/urxvt", "-e", "/bin/fish", NULL};
 static const char *alacritty[] = { "/usr/bin/alacritty", NULL };
 static const char *rofirun[] = { "rofi", "-show", "run", NULL };
-static const char *rofiwin[] = { "rofi", "-lines", "10", "-width", "420", "-show", "window", NULL };
-static const char *roficalc[] = { "rofi", "-show", "calc", "-modi", "calc", "-no-show-match", "-no-sort", NULL };
-static const char *mpdtoggle[] = { "mpc", "toggle", NULL };
-static const char *mpdprev[] = { "mpc", "prev", NULL };
-static const char *mpdnext[] = { "mpc", "next", NULL };
-static const char *mediatoggle[] = { "media.sh", "play-pause", NULL };
-static const char *mediaprev[] = { "media.sh", "previous", NULL };
-static const char *medianext[] = { "media.sh", "next", NULL };
+static const char *rofiwin[] = { "rofi", "-show", "window", NULL };
 static const char *browser[] = { "chromium_overlay_scrollbar", NULL };
 static const char *volumeup[] = { "amixer", "-q", "sset", "Master", "5%+", NULL };
 static const char *volumedown[] = { "amixer", "-q", "sset", "Master", "5%-", NULL };
 static const char *volumetoggle[] = { "amixer", "set", "Master", "toggle", NULL };
-static const char *lock[] = {"lock.sh", "0", NULL};
 static const char *xblup[] = {"xbacklight", "-inc", "8", NULL};
 static const char *xbldown[] = {"xbacklight", "-dec", "8", NULL};
-static const char *screenshot[] = {"screenshot.sh", NULL};
 
 ///--Custom foo---///
 static void halfandcentered(const Arg *arg)
@@ -109,20 +98,13 @@ static key keys[] = {
     // my shortcuts
     {  MOD ,              XK_d,          start,             {.com = rofirun}},
     {  MOD ,              XK_w,          start,             {.com = rofiwin}},
-	{  MOD ,              XK_equal,      start,             {.com = roficalc}},
     {  MOD ,              XK_Return,     start,             {.com = alacritty}},
-    {  MOD |SHIFT,        XK_Return,     start,             {.com = urxvt}},
-    {  MOD ,              XK_F2,         start,             {.com = mediatoggle}},
-    {  MOD ,              XK_F1,         start,             {.com = mediaprev}},
-    {  MOD ,              XK_F3,         start,             {.com = medianext}},
     {  MOD ,              XK_c,          start,             {.com = browser}},
     {  0x000000,          0x1008ff12,    start,             {.com = volumetoggle}},
     {  0x000000,          0x1008ff11,    start,             {.com = volumedown}},
     {  0x000000,          0x1008ff13,    start,             {.com = volumeup}},
     {  0x000000,          0x1008ff03,    start,             {.com = xbldown}},
     {  0x000000,          0x1008ff02,    start,             {.com = xblup}},
-    {  MOD |CONTROL,      XK_x,          start,             {.com = lock}},
-    {  0x000000,          XK_Print,      start,             {.com = screenshot}},
 
 
 
