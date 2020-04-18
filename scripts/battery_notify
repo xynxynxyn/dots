@@ -1,0 +1,25 @@
+#!/bin/sh
+# Check if battery is charging
+read -r status0 < /sys/class/power_supply/BAT0/status
+read -r status1 < /sys/class/power_supply/BAT1/status
+
+if [[ "$status0" -eq "Discharging" || "$status1" -eq "Discharging" ]]
+then
+	# Exit if it is
+	exit 0
+fi
+
+# Calculate total capacity and send notification
+read -r bat0 < /sys/class/power_supply/BAT0/capacity
+read -r bat1 < /sys/class/power_supply/BAT1/capacity
+total_capacity=$((((bat0 + bat1)) / 2))
+
+
+if (( $total_capacity < 10 ))
+then
+	notify-send "Bat Critical" "Battery is at $total_capacity%" -u critical
+elif (( $total_capacity < 20 ))
+then
+	notify-send "Bat Low" "Battery is at $total_capacity%" -u normal
+fi
+echo $total_capacity

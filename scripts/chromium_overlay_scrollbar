@@ -1,0 +1,3 @@
+#!/bin/sh
+# Enable the nice looking scrollbar
+chromium --enable-features=OverlayScrollbar
