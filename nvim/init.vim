@@ -22,6 +22,7 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'udalov/kotlin-vim'
 Plug 'lervag/vimtex'
 Plug 'kovisoft/slimv'
+Plug 'lnl7/vim-nix'
 
 " Autocomplete, Autoformatting and Linting
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -38,9 +39,6 @@ Plug 'arzg/vim-colors-xcode'
 Plug 'itchyny/vim-gitbranch'
 Plug 'majutsushi/tagbar'
 Plug 'junegunn/goyo.vim'
-
-" Misc
-Plug 'aurieh/discord.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
 
