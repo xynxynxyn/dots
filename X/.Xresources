@@ -1,0 +1,135 @@
+! ------------------------------------------------------------------------------
+! Colors
+! ------------------
+! Normal    Bright
+! -------- ---------
+! 0 Black    8 Black
+! 1 Red      9 Red
+! 2 Yellow  10 Yellow
+! 3 Green   11 Green
+! 4 Blue    12 Blue
+! 5 Magenta 13 Magenta
+! 6 Cyan    14 Cyan
+! 7 White   15 White
+
+!#define bg  #222235
+#define bg  #000000
+#define fg  #ffffff
+#define cur #ccecec
+
+! Black
+#define col0 #000000
+#define col8 #3F3F54 
+
+! Red
+#define col1 #f60055
+#define col9 #f60055
+
+! Green
+#define col2 #06c993
+#define col10 #06c993
+
+! Yellow
+#define col3 #9700be
+#define col11 #9700be
+
+! Blue
+#define col4 #f69154
+#define col12 #f69154
+
+! Magenta
+#define col5 #ec89cb
+#define col13 #ec89cb
+
+! Cyan
+#define col6 #00dded
+#define col14 #00dded
+
+! White
+#define col7 #ffffff
+#define col15 #ffffff
+
+! ------------------------------------------------------------------------------
+! URxvt
+! ------------------------------------------------------------------------------
+
+*background:  bg
+*foreground:  fg
+*cursorColor: cur
+
+! Black
+*color0:  col0
+*color8:  col8
+
+! Red
+*color1:  col1
+*color9:  col9
+
+! Green
+*color2:  col2
+*color10: col10
+
+! Yellow
+*color3:  col3
+*color11: col11
+
+! Blue
+*color4:  col4
+*color12: col12
+
+! Magenta
+*color5:  col5
+*color13: col13
+
+! Cyan
+*color6:  col6
+*color14: col14
+
+! White
+*color7:  col7
+*color15: col15
+
+! Rest #121013 dark and light
+*color16: col16
+*color17: col17
+
+
+! ------------------------------------------------------------------------------
+! Rofi
+! ------------------------------------------------------------------------------
+
+rofi.color-enabled: true
+
+rofi.color-window: col0, col15, col0, col0, col0
+rofi.color-normal: col0, #cccccc, col0, col0, #e7d8c1
+rofi.color-active: col0, col0, col0, col0, col0
+rofi.color-urgent: col0, col0, col0, col0, col0
+
+rofi.fake-transparency : true
+rofi.font : Roboto 15
+rofi.columns : 1
+rofi.bw : 2
+rofi.separator-style : none
+rofi.hide-scrollbar : true
+rofi.sidebar-mode : false
+rofi.location : 3
+rofi.yoffset : 70
+rofi.xoffset : -30
+rofi.padding : 32
+rofi.fullscreen : false
+rofi.width : 300
+rofi.lines : 6
+
+! ------------------------------------------------------------------------------
+! 2bwm
+! ------------------------------------------------------------------------------
+!
+twobwm.border_width: 4
+twobwm.outer_border: 0
+twobwm.focus_color: #bfb4ba
+twobwm.unfocus_color: #000000
+! twobwm.fixed_color:
+! twobwm.unkill_color:
+! twobwm.fixed_unkill_color:
+! twobwm.outer_border_color:
+! twobwm.inverted_colors:

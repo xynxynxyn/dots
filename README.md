@@ -5,8 +5,14 @@
 ## Essential software
 - polybar
 - neovim
-- ly display manager
+- ly dm
 - 2bwm
 - ohmyzsh
 - unclutter
 - redshift
+- dunst
+- rofi
+- feh
+- sxiv
+- exa
+- zoxide
