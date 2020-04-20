@@ -51,8 +51,8 @@ static const char *browser[] = { "chromium_overlay_scrollbar", NULL };
 static const char *volumeup[] = { "amixer", "-q", "sset", "Master", "5%+", NULL };
 static const char *volumedown[] = { "amixer", "-q", "sset", "Master", "5%-", NULL };
 static const char *volumetoggle[] = { "amixer", "set", "Master", "toggle", NULL };
-static const char *xblup[] = {"xbacklight", "-inc", "8", NULL};
-static const char *xbldown[] = {"xbacklight", "-dec", "8", NULL};
+static const char *xblup[] = {"light", "-A", "10", NULL};
+static const char *xbldown[] = {"light", "-U", "10", NULL};
 
 ///--Custom foo---///
 static void halfandcentered(const Arg *arg)
@@ -62,6 +62,22 @@ static void halfandcentered(const Arg *arg)
 	Arg arg3 = {.i=TWOBWM_TELEPORT_CENTER};
 	teleport(&arg3);
 }
+static void make_main_window(const Arg *arg)
+{
+    Arg arg2 = {.i=TWOBWM_TELEPORT_TOP_LEFT};
+    teleport(&arg2);
+
+    focuswin->width = 1560;
+    focuswin->height = 1080;
+    resizelim(focuswin);
+    centerpointer(focuswin->id, focuswin);
+    raise_current_window();
+    setborders(focuswin, true);
+
+    Arg arg3 = {.i=TWOBWM_TELEPORT_TOP_RIGHT};
+    teleport(&arg3);
+}
+
 ///---Shortcuts---///
 /* Check /usr/include/X11/keysymdef.h for the list of all keys
  * 0x000000 is for no modkey
@@ -105,6 +121,7 @@ static key keys[] = {
     {  0x000000,          0x1008ff13,    start,             {.com = volumeup}},
     {  0x000000,          0x1008ff03,    start,             {.com = xbldown}},
     {  0x000000,          0x1008ff02,    start,             {.com = xblup}},
+    {  MOD |SHIFT,        XK_space,      make_main_window,  {.i=0}},
 
 
 
