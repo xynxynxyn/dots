@@ -30,8 +30,10 @@ tail = true
 format-padding = 1
 
 [bar/minimal]
-foreground = #ffffff
-background = #000000
+#foreground = #ffffff
+#background = #000000
+foreground = #cbe3e7
+background = #1e1c31
 
 height = 60
 width = 15%
@@ -42,6 +44,30 @@ border-size = 2
 border-color = #ffffff
 
 modules-center = 2bwm_workspaces simple_date separator simple_bat
+bottom = false
+
+font-0 = Inconsolata:size=12;3
+
+tray-position = none
+override-redirect = true
+
+padding = 10
+radius = 1.0
+
+[bar/minimal_light]
+foreground = #4d4d4c
+background = #eeeeee
+highlight = #df9051
+
+height = 60
+width = 15%
+offset-x = 10
+offset-y = 10
+
+border-size = 2
+border-color = #ffffff
+
+modules-center = 2bwm_workspaces_light simple_date separator simple_bat
 bottom = false
 
 font-0 = Inconsolata:size=12;3
@@ -142,6 +168,20 @@ format = <label-state>
 format-padding = 1
 label-active = " %name% "
 label-active-foreground = #fcf4a8
+label-occupied = " %name% "
+label-occupied-foreground = #777777
+label-urgent = " %name%! "
+label-empty = "   "
+
+[module/2bwm_workspaces_light]
+type = internal/xworkspaces
+pin-workspaces = false
+enable-click = false
+enable-scroll = false
+format = <label-state>
+format-padding = 1
+label-active = " %name% "
+label-active-foreground = #df9051
 label-occupied = " %name% "
 label-occupied-foreground = #777777
 label-urgent = " %name%! "

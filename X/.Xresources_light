@@ -12,41 +12,41 @@
 ! 6 Cyan    14 Cyan
 ! 7 White   15 White
 
-#define bg  #1e1c31
-#define fg  #cbe3e7
+#define bg  #eeeeee
+#define fg  #4d4d4c
 #define cur #ccecec
 
 ! Black
-#define col0 #100e23
-#define col8 #565575 
+#define col0 #ededed
+#define col8 #969694 
 
 ! Red
-#define col1 #ff8080
-#define col9 #ff5458
+#define col1 #d7005f
+#define col9 #d7005f
 
 ! Green
-#define col2 #95ffa4
-#define col10 #62d196
+#define col2 #718c00
+#define col10 #718c00
 
 ! Yellow
-#define col3 #ffe9aa
-#define col11 #ffb378
+#define col3 #d75f00
+#define col11 #d75f00
 
 ! Blue
-#define col4 #91ddff
-#define col12 #65b2ff
+#define col4 #4271ae
+#define col12 #4271ae
 
 ! Magenta
-#define col5 #c991e1
-#define col13 #906cff
+#define col5 #8959a8
+#define col13 #8959a8
 
 ! Cyan
-#define col6 #aaffe4
-#define col14 #63f2f1
+#define col6 #3e999f
+#define col14 #3e999f
 
 ! White
-#define col7 #cbe3e7
-#define col15 #a6b3cc
+#define col7 #4d4d4c
+#define col15 #f5f5f5
 
 ! ------------------------------------------------------------------------------
 ! Rofi
@@ -54,13 +54,13 @@
 
 rofi.color-enabled: true
 
-rofi.color-window: bg, fg, bg, bg, col3
-rofi.color-normal: bg, fg, bg, bg, col3
-rofi.color-active: bg, fg, bg, bg, col3
-rofi.color-urgent: bg, fg, bg, bg, col3
+rofi.color-window: bg, fg, bg, bg, col1
+rofi.color-normal: bg, fg, bg, bg, col1
+rofi.color-active: bg, fg, bg, bg, col1
+rofi.color-urgent: bg, fg, bg, bg, col1
 
 rofi.fake-transparency : true
-rofi.font : Inconsolata 15
+rofi.font : Roboto 15
 rofi.columns : 1
 rofi.bw : 2
 rofi.separator-style : none

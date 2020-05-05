@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Toggle between dark and light mode
+config_dir=~/.config/
+mode_file=~/mode.sh
+
+# Check ENV value
+mode=$(cat $mode_file)
+if [[ "$mode" == "dark" ]]; then
+	echo "Switching to light mode"
+	echo "light" > "$mode_file"
+	cp "$config_dir/alacritty/alacritty_light.yml" "$config_dir/alacritty/alacritty.yml"
+	cp ~/.Xresources_light ~/.Xresources
+	xrdb .Xresources
+	pkill polybar
+	polybar minimal_light > /dev/null 2>&1 &
+else
+	# Switch to dark mode by default
+	echo "Switching to dark mode"
+	echo "dark" > "$mode_file"
+	cp "$config_dir/alacritty/alacritty_dark.yml" "$config_dir/alacritty/alacritty.yml"
+	cp ~/.Xresources_dark ~/.Xresources
+	xrdb .Xresources
+	pkill polybar
+	polybar minimal > /dev/null 2>&1 &
+fi

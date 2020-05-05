@@ -109,13 +109,15 @@ eval "$(zoxide init zsh)"
 
 # Aliases
 alias x=exit
+alias v=nvim
 alias vi=nvim
 alias y=yay
-alias nf='neofetch --ascii_distro crux_small'
-alias t=todo
-alias dis=terminal-discord
 alias r='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 alias ls=exa
 alias ll='exa -lh'
 alias l='exa -lah'
 alias weather='curl "wttr.in/?format=%l+%C+%t"'
+alias sd='spotifyd --no-daemon'
+alias zt=zathura
+alias cl=compile_latex
+alias ydl=youtube-dl

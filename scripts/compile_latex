@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+if [[ $# != 1 ]]; then
+	echo "Usage: 'compile_latex [.tex FILE]'"
+	exit 1
+fi
+
+# Remove extension from argument
+file=${1%.*}
+echo "compiling '$file'"
+echo "first time..." &&
+latex -halt-on-error -output-format=pdf "$file" 1>/dev/null &&
+echo "generating bib library..."
+bibtex "$file" 1>/dev/null &&
+echo "second time..." &&
+latex -halt-on-error -output-format=pdf "$file" 1>/dev/null &&
+echo "third time..." &&
+latex -halt-on-error -output-format=pdf "$file" 1>/dev/null &&
+echo "opening '$file.pdf'" &&
+xdg-open "./$file.pdf"

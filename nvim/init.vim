@@ -12,6 +12,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-fugitive'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'jceb/vim-orgmode'
 
 " Language stuff
 Plug 'rust-lang/rust.vim'
@@ -34,8 +35,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'nerdypepper/agila.vim'
 Plug 'itchyny/landscape.vim'
 Plug 'nerdypepper/vim-colors-plain'
+Plug 'xynxynxyn/challenger-deep-vim', { 'as': 'challenger-deep' }
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'olivertaylor/vacme'
-Plug 'arzg/vim-colors-xcode'
 Plug 'itchyny/vim-gitbranch'
 Plug 'majutsushi/tagbar'
 Plug 'junegunn/goyo.vim'
@@ -55,21 +57,65 @@ set foldlevel=99
 " Looks "
 """""""""
 set number
-set background=dark
 syntax on
-colorscheme agila 
 
-" Lightline config
-let g:lightline = {
-	\ 'colorscheme': 'one',
-	\ 'active': {
-	\ 'left': [ [ 'mode', 'paste' ],
-	\ [ 'gitbranch', 'readonly', 'filename', 'modified'] ]
-	\ },
-	\ 'component_function': {
-	\ 	'gitbranch': 'gitbranch#name'
-	\ },
-	\ }
+function! LightMode()
+	set background=light
+	colorscheme PaperColor
+	let g:lightline = {
+		\ 'colorscheme': 'PaperColor_light',
+		\ 'active': {
+		\ 'left': [ [ 'mode', 'paste' ],
+		\ [ 'gitbranch', 'readonly', 'filename', 'modified'] ]
+		\ },
+		\ 'component_function': {
+		\ 	'gitbranch': 'gitbranch#name'
+		\ },
+		\ }
+	call lightline#init()
+	call lightline#colorscheme()
+	call lightline#update()
+endfunction
+
+function! DarkMode()
+  	set termguicolors
+	set background=dark
+	colorscheme challenger_deep
+	let g:lightline = {
+		\ 'colorscheme': 'challenger_deep',
+		\ 'active': {
+		\ 'left': [ [ 'mode', 'paste' ],
+		\ [ 'gitbranch', 'readonly', 'filename', 'modified'] ]
+		\ },
+		\ 'component_function': {
+		\ 	'gitbranch': 'gitbranch#name'
+		\ },
+		\ }
+	call lightline#init()
+	call lightline#colorscheme()
+	call lightline#update()
+endfunction
+"set background=dark
+"colorscheme agila
+
+function! SetMode()
+	if match(readfile("/home/nyx/mode.sh"), "light") != -1
+		call LightMode()
+	else
+		call DarkMode()
+	endif
+endfunction
+
+function! ToggleMode()
+	silent !toggle_mode
+	call SetMode()
+endfunction
+
+command ToggleMode call ToggleMode()
+command UpdateMode call SetMode()
+
+call SetMode()
+
 
 """""""""""""""""""
 " Auto Formatting "
@@ -118,18 +164,21 @@ autocmd FileType arduino setlocal expandtab tabstop=4 shiftwidth=4
 " Haskell
 autocmd FileType haskell set expandtab tabstop=8 shiftwidth=8
 
+" Lisp
+autocmd FileType lisp set expandtab tabstop=2 shiftwidth=2
+
 " Latex
 autocmd FileType tex set expandtab tabstop=4 shiftwidth=4
-" let g:vimtex_compiler_progname = 'nvr'
-" let g:vimtex_compiler_latexmk_engines = {
-"     \ '_'     : '-xelatex'
-"     \}
+let g:vimtex_view_method = 'zathura'
 
 " Kotlin
 autocmd FileType kotlin set expandtab tabstop=4 shiftwidth=4
 
 " Lisp
-au FileType lisp let b:AutoPairs = {'"':'"'}
+autocmd FileType lisp let b:AutoPairs = {'"':'"'}
+
+" Org
+autocmd FileType org set expandtab tabstop=2 shiftwidth=2
 
 """""""
 " Ale "

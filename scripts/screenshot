@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+screenshot_folder=~/pictures/screenshots/
+capture_time=$(date +"%Y%m%d%H%M%S")
+
+if [[ $1 == "-s" ]]
+then
+	maim -s "${screenshot_folder}${capture_time}.png" | xclip -selection clipboard -t image/png
+else
+	maim | tee "${screenshot_folder}${capture_time}.png" | xclip -selection clipboard -t image/png
+fi
+
