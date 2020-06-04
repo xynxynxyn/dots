@@ -20,9 +20,9 @@ static const uint8_t offsets[] = {0,0,0,0};
  *2)fixedcol         3)unkilcol
  *4)fixedunkilcol    5)outerbordercol
  *6)emptycol         */
-static const char *colors[] = {"#35586c","#333333","#7a8c5c","#ff6666","#cc9933","#0d131a","#000000"};
+static const char *colors[] = {"#6d60db", "#37306e", "#6abab2", "#ad3255", "#bf67be", "#37306e", "#000000"}
 /* if this is set to true the inner border and outer borders colors will be swapped */
-static const bool inverted_colors = false;
+static const bool inverted_colors = true;
 ///---NoOuterBorder---///
 /*0) no_outer_border 1) adjust_position */
 //static const bool no_outer_border[] = {true, false};
@@ -36,7 +36,7 @@ static const bool inverted_colors = false;
 /*0) Outer border size. If you put this negative it will be a square.
  *1) Full borderwidth    2) Magnet border size
  *3) Resize border size  */
-static const uint8_t borders[] = {3,5,5,4};
+static const uint8_t borders[] = {4,7,5,4};
 /* Windows that won't have a border.
  * It uses substring comparison with what is found in the WM_NAME
  * attribute of the window. You can test this using `xprop WM_NAME`
@@ -47,7 +47,10 @@ static const char *ignore_names[] = {"bar", "xclock"};
 static const char *alacritty[] = { "/usr/bin/alacritty", NULL };
 static const char *rofirun[] = { "rofi", "-show", "run", NULL };
 static const char *rofiwin[] = { "rofi", "-show", "window", NULL };
-static const char *browser[] = { "chromium_overlay_scrollbar", NULL };
+static const char *lock[] = { "betterlockscreen", "-l", "dim", NULL };
+static const char *browser[] = { "chromium", NULL };
+static const char *screenshotfull[] = { "screenshot", NULL };
+static const char *screenshotselect[] = { "screenshot", "-s", NULL };
 static const char *volumeup[] = { "amixer", "-q", "sset", "Master", "5%+", NULL };
 static const char *volumedown[] = { "amixer", "-q", "sset", "Master", "5%-", NULL };
 static const char *volumetoggle[] = { "amixer", "set", "Master", "toggle", NULL };
@@ -61,21 +64,6 @@ static void halfandcentered(const Arg *arg)
 	maxhalf(&arg2);
 	Arg arg3 = {.i=TWOBWM_TELEPORT_CENTER};
 	teleport(&arg3);
-}
-static void make_main_window(const Arg *arg)
-{
-    Arg arg2 = {.i=TWOBWM_TELEPORT_TOP_LEFT};
-    teleport(&arg2);
-
-    focuswin->width = 1560;
-    focuswin->height = 1080;
-    resizelim(focuswin);
-    centerpointer(focuswin->id, focuswin);
-    raise_current_window();
-    setborders(focuswin, true);
-
-    Arg arg3 = {.i=TWOBWM_TELEPORT_TOP_RIGHT};
-    teleport(&arg3);
 }
 
 ///---Shortcuts---///
@@ -121,7 +109,9 @@ static key keys[] = {
     {  0x000000,          0x1008ff13,    start,             {.com = volumeup}},
     {  0x000000,          0x1008ff03,    start,             {.com = xbldown}},
     {  0x000000,          0x1008ff02,    start,             {.com = xblup}},
-    {  MOD |SHIFT,        XK_space,      make_main_window,  {.i=0}},
+    {  0x000000,          XK_Print,      start,             {.com = screenshotfull}},
+    {  0x000000 |CONTROL, XK_Print,      start,             {.com = screenshotselect}},
+    {  MOD |CONTROL,      XK_x,          start,             {.com = lock}},
 
 
 
@@ -229,7 +219,7 @@ static key keys[] = {
     {  MOD |SHIFT,        XK_Right,      cursor_move,       {.i=TWOBWM_CURSOR_RIGHT}},
     {  MOD |SHIFT,        XK_Left,       cursor_move,       {.i=TWOBWM_CURSOR_LEFT}},
     // Exit or restart 2bwm
-    {  MOD |CONTROL,        XK_e,          twobwm_exit,       {.i=0}},
+    {  MOD |CONTROL,      XK_e,          twobwm_exit,       {.i=0}},
     {  MOD |CONTROL,      XK_r,          twobwm_restart,    {.i=0}},
     {  MOD ,              XK_space,      halfandcentered,   {.i=0}},
     // Change current workspace

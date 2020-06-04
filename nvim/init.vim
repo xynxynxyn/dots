@@ -24,6 +24,7 @@ Plug 'udalov/kotlin-vim'
 Plug 'lervag/vimtex'
 Plug 'kovisoft/slimv'
 Plug 'lnl7/vim-nix'
+Plug 'vakaras/vim-silver'
 
 " Autocomplete, Autoformatting and Linting
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -179,6 +180,9 @@ autocmd FileType lisp let b:AutoPairs = {'"':'"'}
 
 " Org
 autocmd FileType org set expandtab tabstop=2 shiftwidth=2
+
+" Viper
+autocmd FileType sil set expandtab tabstop=2 shiftwidth=2
 
 """""""
 " Ale "
